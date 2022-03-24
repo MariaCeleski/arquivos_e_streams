@@ -9,7 +9,7 @@ static void CriarArquivo2()
 
     nome = LimparNome(nome);
 
-    var path = Path.Combine(Environment.CurrentDirectory, $"{nome}.txt");
+    var path = Path.Combine(Environment.CurrentDirectory, $"{nome}.txt");//(@"C:temp",teste.txt);
 
     CriarArquivo(path);
 

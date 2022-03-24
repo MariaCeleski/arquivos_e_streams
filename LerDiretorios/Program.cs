@@ -5,13 +5,13 @@ Console.WriteLine("Digite [enter] para finalizar...");
 Console.ReadLine();
 Directory.Delete(path);
 
-static void LerArquivos(string path)
+static void LerArquivos(string path)// FileInfo
 {
-    var arquivos = Directory.GetFiles(path,"*",SearchOption.AllDirectories);
-    foreach (var arquivo in arquivos)
+    var arquivos = Directory.GetFiles(path, "*", SearchOption.AllDirectories);//pegar todas as pastas sem entrar nos subdiretórios
+    foreach (var arquivo in arquivos) //pra cada diretório dentro da lista de diretórios printar as informações de cada diretório
     {
         var fileInfo = new FileInfo(arquivo);
-        Console.WriteLine($"[Nome]:{fileInfo.Name}"); 
+        Console.WriteLine($"[Nome]:{fileInfo.Name}");
         Console.WriteLine($"[Tamanho]:{fileInfo.Length}");
         Console.WriteLine($"[Ultimo acesso]:{fileInfo.LastAccessTime}");
         Console.WriteLine($"[Extensão]:{fileInfo.Extension}");

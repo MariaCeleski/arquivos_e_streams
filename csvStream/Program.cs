@@ -1,4 +1,8 @@
-﻿using static System.Console;
+﻿//nuget.org - repositórios de bibliotecas .NET - procurar sempre a melor biblioteca, que tem mais dowload ou pesquisar no steack overflower
+//verificar o "V" e pesquisar no site - get start de como fazer a instalação - .NETCli
+//Um arquivo CSV é um arquivo separado por vírgulas, que é utilizado para armazenar dados de forma organizada. Ele normalmente armazena os dados em forma de tabela. 
+//A maioria das organizações empresariais armazena seus dados em arquivos CSV . Em C#, podemos realizar várias operações em um arquivo CSV
+using static System.Console;
 
 CriarCsv();
 
@@ -43,19 +47,19 @@ static void CriarCsv()
             }
         };
 
-        var di = new DirectoryInfo(path);
-        if(!di.Exists)
-        {
-            di.Create();
-            path = Path.Combine(path,"usuarios.csv");
-        }
-        using var sw = new StreamWriter(path);
-        sw.WriteLine("nome,email,telefone,nascimento");
-        foreach (var pessoa in pessoas)
-        {
-            var linha = $"{pessoa.Nome},{pessoa.Email},{pessoa.Telefone},{pessoa.Nascimento}";
-            sw.WriteLine(linha);
-        }
+    var di = new DirectoryInfo(path);
+    if (!di.Exists)
+    {
+        di.Create();
+        path = Path.Combine(path, "usuarios.csv");
+    }
+    using var sw = new StreamWriter(path);
+    sw.WriteLine("nome,email,telefone,nascimento");
+    foreach (var pessoa in pessoas)
+    {
+        var linha = $"{pessoa.Nome},{pessoa.Email},{pessoa.Telefone},{pessoa.Nascimento}";
+        sw.WriteLine(linha);
+    }
 
 }
 
@@ -73,7 +77,7 @@ static void LerCsv()
         var cabecalho = sr.ReadLine()?.Split(',');
         while (true)
         {
-            var registro = sr.ReadLine()?.Split(',');
+            var registro = sr.ReadLine()?.Split(',');//()?.Split(',') - caso Readline retorne Null, pra não dar erro usa-se ?
             if (registro == null) break;
             if (cabecalho.Length != registro.Length)
             {
@@ -82,7 +86,7 @@ static void LerCsv()
             }
             for (int i = 0; i < registro.Length; i++)
             {
-                WriteLine($"{cabecalho?[i]}:{registro[i]}");
+                WriteLine($"{cabecalho?[i]}:{registro[i]}");//? caso for nulo pra evitar de dar erro
             }
             WriteLine("--------------");
         }
